@@ -3,20 +3,17 @@ package com.andrew;
 import com.andrew.Transactions.Transactions;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class User {
-    private ArrayList<Transactions> transactions;
+    private List<Transactions> transactions = new ArrayList<>();
     private String name;
     private double balance;
 
     public User(String name, double balance) {
         this.name = name;
         this.balance = balance;
-    }
-
-    public ArrayList<Transactions> getTransactions() {
-        return transactions;
     }
 
     public double getBalance() {
@@ -34,7 +31,10 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
+    public void addTransaction(Transactions transaction){
+        transactions.add(transaction);
+        this.balance += transaction.getAmount();
+    }
     @Override
     public String toString() {
         return "User: " + name + ", Balance: " + balance;

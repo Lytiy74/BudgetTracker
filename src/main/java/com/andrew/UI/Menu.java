@@ -1,17 +1,41 @@
 package com.andrew.UI;
 
+
 import com.andrew.Transactions.TransactionOperation;
 import com.andrew.Transactions.Transactions;
+import com.andrew.User;
 
+import javax.sound.midi.Soundbank;
 import java.util.Scanner;
 
 public class Menu {
+   private User user;
+   public Menu(User user){
+       this.user = user;
+   }
     public void mainMenu() {
+        boolean exit = false;
+        do {
+            printMenuElements();
+            Double choice = getUserAnswer("option");
+
+            if (choice == 1.0) {
+                new TransactionOperation().addIncome(getUserAnswer("income"), user);
+            } else if (choice == 2.0) { new TransactionOperation().addExpense(getUserAnswer("expense"),user);
+            } else if (choice == 3.0) { System.out.println(user.toString());
+            } else if (choice == 0.0) {
+                exit = true;
+            } else {
+                System.out.println("Невідома опція. Спробуйте ще раз.");
+            }
+
+        } while (!exit);
     }
 
-    private int getUserAnswer() {
+    private double getUserAnswer(String option) {
+        System.out.println("Enter " + option + " :");
         Scanner scanner = new Scanner(System.in);
-        return Integer.parseInt(scanner.nextLine());
+        return Double.parseDouble(scanner.nextLine());
     }
 
     private void printMenuElements() {
