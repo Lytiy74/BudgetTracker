@@ -1,12 +1,33 @@
 package com.andrew.Transactions;
 
-import com.andrew.User;
+import java.util.Date;
 
 public class Transactions {
-    public static void addToBalance(User user, int sum){
-        user.setBalance(user.getBalance()+sum);
+    private double amount;
+    private Date date;
+    private OperationCategory category;
+
+    public double getAmount() {
+        return amount;
     }
-    public static void removeFromBalance(User user, int sum){
-        user.setBalance(user.getBalance()-sum);
+
+    public Date getDate() {
+        return date;
+    }
+
+    public OperationCategory getCategory() {
+        return category;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setCategory(OperationCategory category) {
+        this.category = category;
     }
 }

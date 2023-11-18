@@ -1,15 +1,17 @@
 package com.andrew;
 
+import java.util.Objects;
+
 public class User {
     private String name;
-    private int balance;
+    private double balance;
 
-    public User(String name, int balance) {
+    public User(String name, double balance) {
         this.name = name;
         this.balance = balance;
     }
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 
@@ -17,7 +19,7 @@ public class User {
         return name;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -27,6 +29,22 @@ public class User {
 
     @Override
     public String toString() {
-        return "User: " + getName() + ", Balance: " + getBalance();
+        return "User: " + name + ", Balance: " + balance;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null)
+            return false;
+        if (o == this)
+            return true;
+        if (!(o instanceof User))
+            return false;
+        return (((User) o).name.equals(this.name) && ((User) o).balance == this.balance);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, balance);
     }
 }
