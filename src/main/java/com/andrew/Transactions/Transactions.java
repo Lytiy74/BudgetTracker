@@ -7,6 +7,12 @@ public class Transactions {
     private Date date;
     private OperationCategory category;
 
+    public Transactions(double amount, Date date, OperationCategory category) {
+        this.amount = amount;
+        this.date = date;
+        this.category = category;
+    }
+
     public double getAmount() {
         return amount;
     }

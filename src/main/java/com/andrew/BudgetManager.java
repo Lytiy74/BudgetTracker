@@ -1,8 +1,10 @@
 package com.andrew;
 
-import java.util.Scanner;
+import com.andrew.UI.Menu;
+
 
 public class BudgetManager {
-    private Scanner scanner;
-    private Budget budget;
+    public void startBudgetTracker() {
+        Menu menu = new Menu();
+    }
 }
