@@ -1,4 +1,4 @@
-package com.andrew.Auth;
+package com.andrew.BudgetTracker.Auth;
 
 
 import java.util.Scanner;

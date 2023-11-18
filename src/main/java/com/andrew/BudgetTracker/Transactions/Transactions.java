@@ -1,4 +1,4 @@
-package com.andrew.Transactions;
+package com.andrew.BudgetTracker.Transactions;
 
 import java.util.Date;
 
@@ -6,11 +6,13 @@ public class Transactions {
     private double amount;
     private Date date;
     private OperationCategory category;
+    private double currentBalance;
 
-    public Transactions(double amount, Date date, OperationCategory category) {
+    public Transactions(double amount, Date date, OperationCategory category, double currentBalance) {
         this.amount = amount;
         this.date = date;
         this.category = category;
+        this.currentBalance = currentBalance;
     }
 
     public double getAmount() {
@@ -35,5 +37,10 @@ public class Transactions {
 
     public void setCategory(OperationCategory category) {
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "DATE: "+ date + " | " + "AMOUNT: " + amount +" | " + "CATEGORY: " + category + " | " + "CURRENT BALANCE: " + currentBalance;
     }
 }

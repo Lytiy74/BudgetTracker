@@ -1,11 +1,9 @@
-package com.andrew.UI;
+package com.andrew.BudgetTracker.UI;
 
 
-import com.andrew.Transactions.TransactionOperation;
-import com.andrew.Transactions.Transactions;
-import com.andrew.User;
+import com.andrew.BudgetTracker.Transactions.TransactionOperation;
+import com.andrew.BudgetTracker.User;
 
-import javax.sound.midi.Soundbank;
 import java.util.Scanner;
 
 public class Menu {

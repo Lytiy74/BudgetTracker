@@ -1,4 +1,4 @@
-package com.andrew.Transactions;
+package com.andrew.BudgetTracker.Transactions;
 
 enum OperationCategory {
     INCOME("Прихід"),

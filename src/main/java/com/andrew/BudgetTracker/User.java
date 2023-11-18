@@ -1,6 +1,6 @@
-package com.andrew;
+package com.andrew.BudgetTracker;
 
-import com.andrew.Transactions.Transactions;
+import com.andrew.BudgetTracker.Transactions.Transactions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,10 @@ public class User {
     public User(String name, double balance) {
         this.name = name;
         this.balance = balance;
+    }
+
+    public List<Transactions> getTransactions() {
+        return transactions;
     }
 
     public double getBalance() {

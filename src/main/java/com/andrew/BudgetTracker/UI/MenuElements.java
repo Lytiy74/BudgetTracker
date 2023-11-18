@@ -1,4 +1,4 @@
-package com.andrew.UI;
+package com.andrew.BudgetTracker.UI;
 
 enum MenuElements {
     INCOME("Додати прихід"),
