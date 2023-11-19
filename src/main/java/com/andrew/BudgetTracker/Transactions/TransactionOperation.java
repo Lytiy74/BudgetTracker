@@ -1,21 +1,21 @@
 package com.andrew.BudgetTracker.Transactions;
 
-import com.andrew.BudgetTracker.User;
+import com.andrew.BudgetTracker.UserService.User;
 
 import java.util.Date;
 
 public class TransactionOperation {
-    private Transactions createTransaction(double amount, OperationCategory category, double balance) {
-        return new Transactions(category == OperationCategory.INCOME ? amount : -amount, new Date(), category, balance);
+    private Transaction createTransaction(double amount, OperationCategory category, double balance) {
+        return new Transaction(category == OperationCategory.INCOME ? amount : -amount, new Date(), category, balance);
     }
     public void addIncome(double amount,User user){
-        Transactions expenseTransaction = new TransactionOperation().createTransaction(amount, OperationCategory.INCOME, user.getBalance());
-        user.addTransaction(expenseTransaction);
-        System.out.println("Прибуток успішно додано.");
+        Transaction incomeTransaction = new TransactionOperation().createTransaction(amount, OperationCategory.INCOME, user.getBalance());
+        user.addTransaction(incomeTransaction);
+        System.out.println("Income successfully added.");
     }
     public void addExpense(double amount, User user){
-        Transactions expenseTransaction = new TransactionOperation().createTransaction(amount, OperationCategory.OUTCOME, user.getBalance());
+        Transaction expenseTransaction = new TransactionOperation().createTransaction(amount, OperationCategory.EXPENSE, user.getBalance());
         user.addTransaction(expenseTransaction);
-        System.out.println("Витрати успішно додано.");
+        System.out.println("Expenses successfully added.");
     }
 }

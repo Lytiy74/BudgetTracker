@@ -2,7 +2,7 @@ package com.andrew.BudgetTracker.UI;
 
 
 import com.andrew.BudgetTracker.Transactions.TransactionOperation;
-import com.andrew.BudgetTracker.User;
+import com.andrew.BudgetTracker.UserService.User;
 
 import java.util.Scanner;
 
@@ -24,7 +24,7 @@ public class Menu {
             } else if (choice == 0.0) {
                 exit = true;
             } else {
-                System.out.println("Невідома опція. Спробуйте ще раз.");
+                System.out.println("Unknown option try again.");
             }
 
         } while (!exit);

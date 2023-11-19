@@ -1,13 +1,14 @@
-package com.andrew.BudgetTracker;
+package com.andrew.BudgetTracker.UserService;
 
-import com.andrew.BudgetTracker.Transactions.Transactions;
+import com.andrew.BudgetTracker.Transactions.Transaction;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class User {
-    private List<Transactions> transactions = new ArrayList<>();
+public class User implements Serializable {
+    private List<Transaction> transactions = new ArrayList<>();
     private String name;
     private double balance;
 
@@ -16,7 +17,7 @@ public class User {
         this.balance = balance;
     }
 
-    public List<Transactions> getTransactions() {
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 
@@ -35,7 +36,7 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-    public void addTransaction(Transactions transaction){
+    public void addTransaction(Transaction transaction){
         transactions.add(transaction);
         this.balance += transaction.getAmount();
     }

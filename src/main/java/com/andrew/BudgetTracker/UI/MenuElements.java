@@ -1,9 +1,9 @@
 package com.andrew.BudgetTracker.UI;
 
 enum MenuElements {
-    INCOME("Додати прихід"),
-    OUTCOME("Додати витрати"),
-    BALANCE("Отримати поточний баланс");
+    INCOME("Add income"),
+    EXPENSE("Add expense"),
+    BALANCE("Get current balance");
     private final String title;
 
     MenuElements(String title) {

@@ -2,13 +2,13 @@ package com.andrew.BudgetTracker.Transactions;
 
 import java.util.Date;
 
-public class Transactions {
+public class Transaction {
     private double amount;
     private Date date;
     private OperationCategory category;
     private double currentBalance;
 
-    public Transactions(double amount, Date date, OperationCategory category, double currentBalance) {
+    public Transaction(double amount, Date date, OperationCategory category, double currentBalance) {
         this.amount = amount;
         this.date = date;
         this.category = category;
