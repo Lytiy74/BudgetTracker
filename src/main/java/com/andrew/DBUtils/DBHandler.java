@@ -9,29 +9,21 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DBHandler implements AutoCloseable {
-    private Connection connection;
-    private String dbURL;
-    private String dbUsername;
-    private String dbPassword;
+    Connection connection;
     public Connection getConnection() throws SQLException, ClassNotFoundException {
-        getProperties();
-        connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
-        return connection;
+        Properties properties = getProperties();
+        return DriverManager.getConnection(properties.getProperty("db.host"), properties.getProperty("db.username"), properties.getProperty("db.password"));
     }
-    private void getProperties(){
-        FileInputStream fis;
+    private Properties getProperties(){
         Properties properties = new Properties();
-        try {
-            fis = new FileInputStream("src/main/resources/config.properties");
+        try(FileInputStream fis = new FileInputStream("src/main/resources/config.properties")) {
             properties.load(fis);
-          this.dbURL = properties.getProperty("db.host");
-          this.dbUsername = properties.getProperty("db.username");
-          this.dbPassword = properties.getProperty("db.password");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        return properties;
     }
 
     @Override

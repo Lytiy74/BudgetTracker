@@ -6,6 +6,7 @@ import com.andrew.DBUtils.CRUDUtils;
 import java.util.Date;
 
 public class TransactionOperation {
+
     private Transaction createTransaction(double amount, OperationCategory category, double balance) {
         return new Transaction(category == OperationCategory.INCOME ? amount : -amount, new Date(), category, balance);
     }
@@ -13,12 +14,14 @@ public class TransactionOperation {
         Transaction incomeTransaction = new TransactionOperation().createTransaction(amount, OperationCategory.INCOME, user.getBalance());
         user.setBalance(user.getBalance()+amount);
         user.getTransactions().add(incomeTransaction);
+        new CRUDUtils().updateUserData(user);
         System.out.println("Income successfully added.");
     }
     public void addExpense(double amount, User user){
         Transaction expenseTransaction = new TransactionOperation().createTransaction(amount, OperationCategory.EXPENSE, user.getBalance());
         user.setBalance(user.getBalance()+amount);
         user.getTransactions().add(expenseTransaction);
+        new CRUDUtils().updateUserData(user);
         System.out.println("Expenses successfully added.");
     }
 }
