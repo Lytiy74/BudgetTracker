@@ -1,6 +1,7 @@
 package com.andrew.BudgetTracker.Transactions;
 
 import com.andrew.BudgetTracker.UserService.User;
+import com.andrew.DBUtils.CRUDUtils;
 
 import java.util.Date;
 
@@ -10,12 +11,14 @@ public class TransactionOperation {
     }
     public void addIncome(double amount,User user){
         Transaction incomeTransaction = new TransactionOperation().createTransaction(amount, OperationCategory.INCOME, user.getBalance());
-        user.addTransaction(incomeTransaction);
+        user.setBalance(user.getBalance()+amount);
+        user.getTransactions().add(incomeTransaction);
         System.out.println("Income successfully added.");
     }
     public void addExpense(double amount, User user){
         Transaction expenseTransaction = new TransactionOperation().createTransaction(amount, OperationCategory.EXPENSE, user.getBalance());
-        user.addTransaction(expenseTransaction);
+        user.setBalance(user.getBalance()+amount);
+        user.getTransactions().add(expenseTransaction);
         System.out.println("Expenses successfully added.");
     }
 }

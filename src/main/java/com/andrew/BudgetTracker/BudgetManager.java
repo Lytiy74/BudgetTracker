@@ -1,5 +1,6 @@
 package com.andrew.BudgetTracker;
 
+import com.andrew.BudgetTracker.Transactions.TransactionOperation;
 import com.andrew.DBUtils.CRUDUtils;
 import com.andrew.DBUtils.DBHandler;
 
@@ -10,7 +11,7 @@ public class BudgetManager {
     public void startBudgetTracker() {
         ;
         try(Connection connection = new DBHandler().getConnection()) {
-            CRUDUtils crudUtils = new CRUDUtils();
+            CRUDUtils crudUtils = new CRUDUtils(connection);
             System.out.println(crudUtils.getUserData("SELECT * FROM users"));
         } catch (SQLException e) {
             throw new RuntimeException(e);

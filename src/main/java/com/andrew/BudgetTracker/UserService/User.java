@@ -1,16 +1,14 @@
 package com.andrew.BudgetTracker.UserService;
 
 import com.andrew.BudgetTracker.Transactions.Transaction;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class User implements Serializable {
+public class User{
     private List<Transaction> transactions = new ArrayList<>();
-    private int id;
-    private String name;
+    private final int id;
+    private final String name;
     private double balance;
 
     public User(int id, String name, double balance) {
@@ -18,13 +16,11 @@ public class User implements Serializable {
         this.name = name;
         this.balance = balance;
     }
-
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
     public List<Transaction> getTransactions() {
         return transactions;
-    }
-    public void addTransaction(Transaction transaction){
-        transactions.add(transaction);
-        this.balance += transaction.getAmount();
     }
 
     public double getBalance() {

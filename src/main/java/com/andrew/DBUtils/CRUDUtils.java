@@ -10,20 +10,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CRUDUtils {
+    private Connection connection;
     private List<User> userList = new ArrayList<>();
-    public List<User> getUserData(String query){
-        try(Connection connection = new DBHandler().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(query)){
-           ResultSet rs = preparedStatement.executeQuery();
-           while (rs.next()){
-               userList.add(new User(rs.getInt("idusers"),
-                       rs.getString("name"),rs.getInt("balance")));
-           }
+
+    public CRUDUtils(Connection connection) {
+        this.connection = connection;
+    }
+    public List<User> getUserList() {
+        return userList;
+    }
+    public List<User> getUserData(String query) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                userList.add(new User(rs.getInt("idusers"),
+                        rs.getString("name"), rs.getInt("balance")));
+            }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         return userList;
+    }
+
+    public void updateUserData() {
+    }
+
+    public void updateTransactionData() {
+
     }
 }
