@@ -9,10 +9,12 @@ import java.util.Objects;
 
 public class User implements Serializable {
     private List<Transaction> transactions = new ArrayList<>();
+    private int id;
     private String name;
     private double balance;
 
-    public User(String name, double balance) {
+    public User(int id, String name, double balance) {
+        this.id = id;
         this.name = name;
         this.balance = balance;
     }
@@ -20,29 +22,22 @@ public class User implements Serializable {
     public List<Transaction> getTransactions() {
         return transactions;
     }
+    public void addTransaction(Transaction transaction){
+        transactions.add(transaction);
+        this.balance += transaction.getAmount();
+    }
 
     public double getBalance() {
         return balance;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void addTransaction(Transaction transaction){
-        transactions.add(transaction);
-        this.balance += transaction.getAmount();
-    }
     @Override
     public String toString() {
-        return "User: " + name + ", Balance: " + balance;
+        return "User{" +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", balance=" + balance +
+                '}';
     }
 
     @Override
